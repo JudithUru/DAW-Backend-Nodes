@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      models.etiqueta.belongsToMany(models.foto, {
+        through: 'fotoetiquetas', foreignKey: "etiqueta_id"
+      });
     }
   }
   etiqueta.init({
