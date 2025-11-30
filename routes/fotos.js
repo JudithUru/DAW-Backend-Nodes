@@ -16,6 +16,7 @@ router.get('/findAll/json', function (req, res, next) {
             attributes: ['texto'],
             through: { attributes: [] }
         }],
+        order: [['id', 'ASC']] //para ordenar
     }).then(fotos => {
         res.json(fotos);
     }).catch(error => res.status(400).send(error)
@@ -42,7 +43,8 @@ router.get('/findAllByRate/json', function (req, res, next) {
             calificacion: {
                 [Op.between]: [lower, higher] //aqui hace la consulta
             }
-        }
+        },
+        order: [['id', 'ASC']]
     }).then(fotos => {
         res.json(fotos);
     }).catch(error => res.status(400).send(error)
