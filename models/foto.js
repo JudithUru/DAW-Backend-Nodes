@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      //Agregar asociacion
+      models.foto.belongsToMany(models.etiqueta, {
+        through: 'fotoetiquetas', foreignKey: "foto_id"
+      });
     }
   }
   foto.init({
